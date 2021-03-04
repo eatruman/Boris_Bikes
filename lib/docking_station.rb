@@ -1,5 +1,6 @@
 require_relative 'Bike'
 class DockingStation
+  DEFAULT_CAPACITY = 20
 attr_accessor :bikes
 
   def initialize
@@ -14,12 +15,12 @@ attr_accessor :bikes
   def dock(bike)
     fail 'Station is full' if self.full?
     @bikes << bike
-    @bikes.last 
+    @bikes.last
   end
 
 private
   def full?
-    if @bikes.length >= 20
+    if @bikes.length >= DEFAULT_CAPACITY 
       true
     else false
     end
