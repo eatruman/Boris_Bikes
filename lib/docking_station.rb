@@ -7,12 +7,28 @@ attr_accessor :bikes
   end
 
   def release_bike
-    fail 'No bikes available' if @bikes.length == 0
+    fail 'No bikes available' if self.empty?
     @bikes.pop
   end
 
   def dock(bike)
-    fail 'Station is full' if @bikes.length >= 20
+    fail 'Station is full' if self.full?
     @bikes << bike
+    @bikes.last 
   end
+
+private
+  def full?
+    if @bikes.length >= 20
+      true
+    else false
+    end
+  end
+
+   def empty?
+     if @bikes.length == 0
+       true
+     else false
+     end
+   end
 end
